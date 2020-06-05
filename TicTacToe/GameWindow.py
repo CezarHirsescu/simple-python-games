@@ -46,6 +46,7 @@ class GameWindow:
         self.height = 540 + self.WORD_SPACE
         self.width = 590
         self.window = py.display.set_mode((self.width, self.height))
+        py.display.set_caption('Tic Tac Toe')
         self.window.fill(self.WHITE)
         py.display.update()
         self.game_array = [['_', '_', '_'],
@@ -388,7 +389,6 @@ class GameWindow:
                     event = py.event.wait()
                     if event.type == py.QUIT:
                         py.quit()
-                        return 1
 
             self._draw_grid()
 
@@ -409,8 +409,4 @@ class GameWindow:
 
             py.time.delay(100)
             py.display.update()
-
-
-if __name__ == '__main__':
-    game = GameWindow()
-    game.run(game.hard_ai)
+        py.quit()
