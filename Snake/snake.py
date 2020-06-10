@@ -4,7 +4,7 @@ import tkinter as tk
 from tkinter import messagebox
 
 width = 600
-grid_length = 20
+grid_length = 25
 size = width // grid_length
 
 
@@ -89,8 +89,8 @@ def generate_snack(snake):
     try_again = True
     while try_again:
         try_again = False
-        rand_x = randint(0, 19) * 30
-        rand_y = randint(0, 19) * 30
+        rand_x = randint(0, grid_length - 1) * size
+        rand_y = randint(0, grid_length - 1) * size
         for cube in snake:
             if rand_x == cube.pos_x or rand_y == cube.pos_y:
                 try_again = True
@@ -104,8 +104,8 @@ def draw_snack(window, x, y):
 
 def draw_gridlines(window):
     for i in range(1, grid_length):
-        py.draw.line(window, (255, 255, 255), (0, i * size), (width, i * size))
-        py.draw.line(window, (255, 255, 255), (i * size, 0), (i * size, width))
+        py.draw.line(window, (0, 0, 0), (0, i * size), (width, i * size))
+        py.draw.line(window, (0, 0, 0), (i * size, 0), (i * size, width))
     py.display.update()
 
 
@@ -139,7 +139,7 @@ def main():
 
         play = True
         while play:
-            py.time.delay(60)
+            py.time.delay(40)
             clock.tick(10)
 
             for event in py.event.get():
