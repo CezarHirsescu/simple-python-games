@@ -388,7 +388,8 @@ class GameWindow:
                 while True:
                     event = py.event.wait()
                     if event.type == py.QUIT:
-                        py.quit()
+                        running = False
+                        break
 
             self._draw_grid()
 
