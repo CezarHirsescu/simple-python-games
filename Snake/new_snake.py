@@ -4,7 +4,7 @@ import tkinter as tk
 from tkinter import messagebox
 
 width = 600
-grid_length = 30
+grid_length = 25
 size = width // grid_length
 
 
@@ -102,13 +102,6 @@ def draw_snack(window, x, y):
     py.draw.rect(window, (0, 255, 0), (x, y, size, size))
 
 
-def draw_gridlines(window):
-    for i in range(1, grid_length):
-        py.draw.line(window, (255, 255, 255), (0, i * size), (width, i * size))
-        py.draw.line(window, (255, 255, 255), (i * size, 0), (i * size, width))
-    py.display.update()
-
-
 def display_messagebox(score, best_score):
     window = tk.Tk()
     window.eval('tk::PlaceWindow %s center' % window.winfo_toplevel())
@@ -139,7 +132,7 @@ def main():
 
         play = True
         while play:
-            py.time.delay(30)
+            py.time.delay(40)
             clock.tick(10)
 
             for event in py.event.get():
@@ -153,7 +146,6 @@ def main():
             snake.update_snake()
             snake.draw_snake()
             draw_snack(window, snack_x, snack_y)
-            #draw_gridlines(window)
 
             if snake.head.pos_x == snack_x and snake.head.pos_y == snack_y:
                 snake.add_cube()
